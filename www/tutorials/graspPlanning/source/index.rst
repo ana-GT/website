@@ -13,6 +13,7 @@ Contents:
 
    A_comprehensive_grasp_taxonomy
    1989_TRA_Cutkosky
+   1985_ICRA_Lyons
 	      
 
 
