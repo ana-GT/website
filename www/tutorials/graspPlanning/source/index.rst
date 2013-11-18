@@ -12,9 +12,10 @@ Contents:
    :maxdepth: 2
 
    A_comprehensive_grasp_taxonomy
+   1956_Napier_SurgeryJournal
    1989_TRA_Cutkosky
    1985_ICRA_Lyons
-	      
+   2003_ICRA_Miller
 
 
 Indices and tables
