@@ -18,6 +18,7 @@ body {background: #fff}
 p {color: #000; font-size: 13px}
 p.welcome_text {font-size: 180%; text-align:center; font-weight: normal; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic}
 p.welcome_text_small {font-size: 150%; text-align:center; font-weight: normal; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic}
+p.welcome_text_ana_1 {font-size: 110%; text-align:left; font-weight: normal; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic}
 
 h1,h2,h3,h4 {font-family:'Open Sans Condensed',sans-serif; font-weight: normal}
 .heading_dots {background: url(../images/heading_dots_grey.png) repeat-x center}

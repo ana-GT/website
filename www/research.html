@@ -94,13 +94,10 @@
 							<li><a href="#efficientTask">Efficient Manipulation Planning using Task Goals</a></li>
 							<li><a href="#sq">Grasping unknown objects using superquadrics approximation</a></li>
 							<li><a href="#nss">Path Planning for Redundant Robotic Arms</a></li>
-							<li><a href="#huboMove">Robot Locomotion</a></li>
 					</ul>
 				<h4>Various previous projects</h4>
 						<ul>
 							<li><a href="#tortuninjaProject">Robot exploration under human supervision</a></li>
-							<li><a href="#MMT">Path Planning for Multiple Moving Targets</a></li>
-							<li><a href="#3DMapping">3D Reconstruction and Mapping (class projects)</a></li>
 					</ul>		
 
 			<!-- Horizontal Line -->       
@@ -109,7 +106,7 @@
 			<h5><a name="cabinet">The Robot vs the Cabinet</a></h5>
 				<table border="1">
 				<tr>
-						<td><iframe src="https://youtu.be/GzP4uYzrHCM" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></td>
+						<td><iframe width="400" height="300" src="https://www.youtube.com/embed/GzP4uYzrHCM" frameborder="0" allowfullscreen></iframe></td>
 						<td>Bin picking, although an inherently simple problem, is not that easy to solve for a robot with such long limb as ours (not to mention his
 freaking long fingers). Whenever I have free time, I go away from my benchmarking general manipulation problems and investigate how to efficiently generate
 plans for Crichton to become a future warehouse robot :0}</td>
@@ -122,7 +119,7 @@ plans for Crichton to become a future warehouse robot :0}</td>
 			<h5><a name="efficientTask">Efficient Manipulation Planning using Task Goals</a></h5>
 				<table border="1">
 				<tr>
-						<td><iframe src="https://youtu.be/3Z4I2Ha1ko0" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></td>
+						<td><iframe width="400" height="300" src="https://www.youtube.com/embed/3Z4I2Ha1ko0" frameborder="0" allowfullscreen></iframe></td>
 						<td>Our recent work submitted to IROS! In order to grasp an object you have to choose among potentially infinite possibilities, particularly if your arm is redundant. In this work, we investigate how to use the end-comfort effect to help us choose a solution quickly and effectively.</td>
 				</tr>
 				</table> 
@@ -131,9 +128,9 @@ plans for Crichton to become a future warehouse robot :0}</td>
 			<h5><a name="sq">Grasping Unknown Objects using online Superquadrics Approximation</a></h5>
 				<table border="1">
 				<tr>
-						<td><iframe src="http://youtube.com/embed/xqqJ4IUxFoA?list=PL0_FFtSIbUNUhWShdd6sGyoz9qICKSPNF" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></td>
+						<td><iframe width="400" height="300" src="https://www.youtube.com/embed/7vFIv2wl-Mk" frameborder="0" allowfullscreen></iframe></td>
 						<td>I have to add more details here but in short: Does your robot have what it takes to grasp unknown objects in a fast and efficient manner? 
-In this work, we do experiments to grasp unknown objects by approximating their shape using superquadrics...more explanation coming up soon!</td>
+This work will be presented at ICRA 2015 in May</td>
 				</tr>
 				</table> 
 
@@ -149,47 +146,6 @@ one possible way to accomplish a manipulation task. However, this flexibility al
 to list all the possibilities so we can choose "the best"? I propose a determistic method to express these different alternatives by means of discretizing the
 nullspace of the arm and searching through it. By using diverse heuristic functions, we evaluate the configurations and choose the best depending on our
 requirements.</td>
-				</tr>
-				</table> 
-
-			<!--  Robot Locomotion -->
-			<h5><a name="huboMove">Robot Locomotion</a></h5>
-				<table border="1">
-				<tr>
-						<td>
-							<table border="0">
-							<tr><td><iframe src="http://player.vimeo.com/video/61932249" width="300" height="310" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></td></tr>
-							<tr><td><iframe src="http://player.vimeo.com/video/61931693" width="300" height="150" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></td></tr>
-							</table>
-						<td>
-						Walking is one of the activities that humans do everyday without thinking about it. However for robots the story is completely different. There are in general 2 types
-						of approaches for humanoid walking: Methods based on ZMP, which strongly depends on having a good model of the robot and approaches based on feedback controllers.
-						Currently I am working in a simple approach to generate smooth gaits that allow a natural, human-like walk by combining an accurate (read "reasonably good") mass model	
-						with an online controller. The videos show some preliminary (failing) tests with the torso and lower limbs of the robot
-						trying to get into balance after falling from a short height. The video below shows the test of the swing movement for one of the feet of the simulated robot. 
-						</td>
-				</tr>
-				</table> 
-
-			<!-- Horizontal Line -->       
-			<hr />	
-
-			<!--  Robot Exploration under Human Supervision -->
-			<h5><a name="MMT">Searching for Multiple Moving Targets</a></h5>
-				<table border="1">
-				<tr>
-						<td><embed src="http://blip.tv/play/AYKypF8A?p=1" type="application/x-shockwave-flash" width="380"  wmode="transparent" allowscriptaccess="always" allowfullscreen="true" ></embed></td>
-						<td>
-						Search is a basic problem in Artificial Intelligence. . The most common case, in which an agents moves towards an static 
-						target in an enviroment (static or dynamic) has been analyzed extensively; however, not much work has been done in the
-					  following setup: Having one agent and multiple moving targets, what is the most effective plan to reach all of them in
-						the smallest amount of time? We analyze this problem by making use of multiple instances of GAA* (proposed by Koenig),
-					 an algorithm based on A* to solve this problem in an efficient, yet simple way.
-
-					The video shows a (initially) unknown maze and an agent starting at the bottom right corner. Red moving dots are the moving
-					targets. As the agent moves, it builds a discrete map of the environment (discovered obstacles are shown in magenta) and keeps
-					updating its initial plan until it reaches all the targets.
-						</td>
 				</tr>
 				</table> 
 
@@ -211,29 +167,8 @@ requirements.</td>
 				</tr>
 				</table> 
 
-
 			<!-- Horizontal Line -->       
 			<hr />	
-
-			<!--  Robot Exploration under Human Supervision -->
-			<h5><a name="3DMapping">3D Reconstruction and Mapping: Various projects</a></h5>
-				<table border="1">
-				<tr>
-						<td>
-							<table border="0">
-							<tr><td><embed src="http://blip.tv/play/AYODm08A?p=1" type="application/x-shockwave-flash" width="400" height="310" wmode="transparent" allowscriptaccess="always" allowfullscreen="true"  align="center"></embed></td></tr>
-							<tr><td><embed src="http://blip.tv/play/AYODm0UA?p=1" type="application/x-shockwave-flash" width="320" height="255" wmode="transparent" allowscriptaccess="always" allowfullscreen="true" align="center" ></embed></td></tr>
-							</table>
-						</td>
-						<td>
-						In this class we explored diverse ways to map a 3D environment by using diverse sensors (such as a Kinect or a standard camera). In this particular
-						project, we built a topological map of our Lab office environment by using <a href="http://itee.uq.edu.au/~milford/Mapping/Mapping.html">RATSLAM</a>
-						a biologically inspired SLAM algorithm. The results are shown in the video at the left. As it can be seen, the algorithm correctly detects closed-loops and uses this information
-						to correct its measurements. The input video used to produce the results is shown below.
-						</td>
-				</tr>
-				</table> 
-
 
       </div>
       </div>
