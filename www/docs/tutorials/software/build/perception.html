@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Perception Software Tools &mdash; golems 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="golems 0 documentation" href="index.html" />
+    <link rel="prev" title="Golems Software Tools Documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Golems Software Tools Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">golems 0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="perception-software-tools">
+<h1>Perception Software Tools<a class="headerlink" href="#perception-software-tools" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="kinect-primesense-drivers">
+<h2>Kinect / PrimeSense Drivers<a class="headerlink" href="#kinect-primesense-drivers" title="Permalink to this headline">¶</a></h2>
+<p>Currently the robots use 2 different kind of sensors:</p>
+<ol class="arabic simple">
+<li>Crichton uses a Carmine (PrimeSense 1.09), which is just a short-range PrimeSense (0.35 - 1.4m)</li>
+<li>Alita uses a regular Kinect (old one, version 1.0)</li>
+</ol>
+<p>Since as far as I know, the Carmine only works with OpenNI2, we will stick to it. Our system
+requires the following packages to be installed:</p>
+<ol class="arabic simple">
+<li><strong>OpenNI2:</strong> Base driver needed to access the Carmine</li>
+<li><strong>libfreenect:</strong> Needed to use the Kinect with OpenNI2</li>
+<li><strong>Nite2:</strong> I use it for Skeleton tracking.</li>
+</ol>
+<p>Notice that we do NOT use OpenNI anymore. I had been under the wrong impression
+that OpenNI2 did not work with Kinect, but that was wrong. You need to install
+libfreenect and then Kinect is available to use.</p>
+<p>PS.- Most of the info here comes from <a class="reference external" href="http://eras.readthedocs.org/en/latest/servers/body_tracker/doc/setup.html">this tutorial</a></p>
+<div class="section" id="openni2">
+<h3>OpenNI2<a class="headerlink" href="#openni2" title="Permalink to this headline">¶</a></h3>
+<p>I installed this some months previous to the time of this writing, so I will write what
+I remember. Install OpenNI2 from the occipital repository:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/occipital/OpenNI2
+</pre></div>
+</div>
+<p>The website of Occipital is <a class="reference external" href="http://structure.io/openni">here</a>, in case you are curious.
+Remember to check that the rules in udev/rules.d contain the specifications for the
+hardware you will use. For instance, for the Kinect, you should have the following
+lines in the file: /etc/udev/rules.d/51-kinect.rules</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;045e&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;02b0&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;045e&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;02ad&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;045e&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;02ae&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;045e&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;02c2&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;045e&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;02be&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;045e&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;02bf&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+</pre></div>
+</div>
+<p>If I remember correctly, by default OpenNI2 only comes with rules for the PrimeSense, which are:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Make primesense device mount with writing permissions (default is read only for unknown devices)</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;0200&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;0300&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;0401&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;0500&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;0600&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;0601&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;0609&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;1250&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;1260&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;1270&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;1280&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;1290&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+<span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;usb&quot;</span>, ATTR<span class="o">{</span>idProduct<span class="o">}==</span><span class="s2">&quot;f9db&quot;</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">&quot;1d27&quot;</span>, MODE:<span class="o">=</span><span class="s2">&quot;0666&quot;</span>, OWNER:<span class="o">=</span><span class="s2">&quot;root&quot;</span>, GROUP:<span class="o">=</span><span class="s2">&quot;video&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="libfreenect">
+<h3>libfreenect<a class="headerlink" href="#libfreenect" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Download the OpenNI2-FreenectDriver</li>
+<li>Once compiled, copy driver to OpenNI2 directory</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/OpenKinect/libfreenect.git
+<span class="nb">cd </span>libfreenect
+mkdir build<span class="p">;</span> <span class="nb">cd </span>build
+cmake .. -DBUILD_OPENNI2_DRIVER<span class="o">=</span>ON
+make
+cp -L lib/OpenNI2-FreenectDriver/libFreenectDriver.so <span class="si">${</span><span class="nv">OPENNI2_DIR</span><span class="si">}</span>/Bin/x64-Release/OpenNI2/Drivers
+</pre></div>
+</div>
+<p>As the original tutorial says, if everything went all right, you can plug in your Kinect and run the example in OpenNI2</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> <span class="si">${</span><span class="nv">OPENNI2_DIR</span><span class="si">}</span>/Bin/x64-Release/
+./NiViewer
+</pre></div>
+</div>
+<p>I verified and it works for both Carmine and regular Kinect.</p>
+</div>
+<div class="section" id="nite2">
+<h3>NiTE2<a class="headerlink" href="#nite2" title="Permalink to this headline">¶</a></h3>
+<p>You only need to install this if you want to use applications such as Skeleton tracking. I need
+that for handover activities:</p>
+<ol class="arabic">
+<li><p class="first">Download NiTE2 from: <a class="reference external" href="http://ilab.usc.edu/packages/forall/ubuntu-13.10/NiTE-Linux-x64-2.2.tar.bz2">http://ilab.usc.edu/packages/forall/ubuntu-13.10/NiTE-Linux-x64-2.2.tar.bz2</a></p>
+</li>
+<li><p class="first">Extract NiTE-Linux-x64-2.2</p>
+</li>
+<li><p class="first">Run install.sh (only generates a text file with location directions, from what I can see).</p>
+</li>
+<li><p class="first">Copy the libFreenectDriver.so from libfreenect into the Drivers folder in NiTE to test the skeleton tracker:</p>
+<div class="highlight-bash"><div class="highlight"><pre>cp <span class="si">${</span><span class="nv">LIBFREENECT_DIR</span><span class="si">}</span>/build/lib/OpenNI2-FreenectDriver/libFreenectDriver.so <span class="si">${</span><span class="nv">NiTE2_DIR</span><span class="si">}</span>/Samples/Bin/OpenNI2/Drivers
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run demo skeleton tracker (UserViewer in Samples/Bin folder in NiTE2)</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Perception Software Tools</a><ul>
+<li><a class="reference internal" href="#kinect-primesense-drivers">Kinect / PrimeSense Drivers</a><ul>
+<li><a class="reference internal" href="#openni2">OpenNI2</a></li>
+<li><a class="reference internal" href="#libfreenect">libfreenect</a></li>
+<li><a class="reference internal" href="#nite2">NiTE2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Golems Software Tools Documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/perception.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Golems Software Tools Documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">golems 0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, A. C. Huaman Quispe.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
