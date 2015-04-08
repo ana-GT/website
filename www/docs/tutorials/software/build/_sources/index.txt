@@ -12,7 +12,8 @@ Contents:
    :maxdepth: 2
 
    perception
-
+   calvin
+   
 Indices and tables
 ==================
 

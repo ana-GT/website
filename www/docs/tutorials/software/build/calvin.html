@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Setup of Control Machine (calvin) &mdash; golems 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="golems 0 documentation" href="index.html" />
+    <link rel="prev" title="Perception Software Tools" href="perception.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="perception.html" title="Perception Software Tools"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">golems 0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="setup-of-control-machine-calvin">
+<h1>Setup of Control Machine (calvin)<a class="headerlink" href="#setup-of-control-machine-calvin" title="Permalink to this headline">¶</a></h1>
+<p>Calvin is the machine in charge of controlling the robot motors.
+It has the CAN cards to communicate with the drives, Schunk hands,
+F/T and tactile sensors. Recently (Tuesday, April 7th, 2015) we had
+to wipe it out, so here the documented procedure for setting it up:</p>
+<ol class="arabic">
+<li><p class="first">Reinstall the latest version of debian. Currently we installed debian Jessie 2 RC, 64 bits
+(3.16.0-4-amd64). Calvin does require a USB drive installation (no DVD reader). I set
+the booting order to have USB first, but in case it does not work, press F11
+for booting options.</p>
+</li>
+<li><p class="first">Add me as an  user (i.e. ana) and give myself sudo power</p>
+<div class="highlight-bash"><div class="highlight"><pre>useradd/adduser ana sudo
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install packages: git</p>
+</li>
+<li><p class="first">Install packages for installing our funky Lab packages: autoconf, autoconf-archive, autotools, doxygen.</p>
+</li>
+<li><p class="first">Install amino requirements:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install libblas3gf libblas-dev liblapack3gf liblapack-dev maxima
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install gfortran, build-essentials (always needed. gfortran is for amino as well).</p>
+</li>
+<li><p class="first">Install amino, ach and sns. I prefer /usr/local.</p>
+</li>
+<li><p class="first">Remember to set achd in inetd (See ACH manual, section 6.1.1). This machine gets input through ach channels over the network, so this is required.</p>
+</li>
+</ol>
+<div class="section" id="installation-of-can402">
+<h2>Installation of can402<a class="headerlink" href="#installation-of-can402" title="Permalink to this headline">¶</a></h2>
+<p>Besides installing socanmatic, you only have one extra thing to do: Set the can interfaces.
+For this, I used the instructions from <a href="#id1"><span class="problematic" id="id2">`this guy in WPI who also uses can402 &lt; http://www.cs.rpi.edu/foswiki/bin/view/RoboticsWeb/PowerballGATech&gt;`_</span></a>
+and also asked Neil for modifications to adapt the indications to our setup.</p>
+<p>In short: You have to modify /etc/network/interfaces to create our SocketCAN drivers:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo vim /etc/network/interfaces
+</pre></div>
+</div>
+<p>You should add the following lines:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># can0:</span>
+auto can0
+iface can0 inet manual
+pre-up ip link <span class="nb">set</span> <span class="nv">$IFACE</span> <span class="nb">type </span>can bitrate 1000000
+up /sbin/ifconfig <span class="nv">$IFACE</span> up
+down /sbin/ifconfig <span class="nv">$IFACE</span> down
+
+auto can1
+iface can1 inet manual
+pre-up ip link <span class="nb">set</span> <span class="nv">$IFACE</span> <span class="nb">type </span>can bitrate 1000000
+up /sbin/ifconfig <span class="nv">$IFACE</span> up
+down /sbin/ifconfig <span class="nv">$IFACE</span> down
+
+auto can2
+iface can2 inet manual
+pre-up ip link <span class="nb">set</span> <span class="nv">$IFACE</span> <span class="nb">type </span>can bitrate 1000000
+up /sbin/ifconfig <span class="nv">$IFACE</span> up
+down /sbin/ifconfig <span class="nv">$IFACE</span> down
+</pre></div>
+</div>
+<p>In our case we also add 3 interfaces: can0 for left arm, can1 for right and can2 for torso.
+After you save these changes, restart the network service (or just restart the machine). To make
+sure your interfaces are there run:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo ifconfig
+</pre></div>
+</div>
+<p>And you should see can0, can1 and can2. Once this is done, you are good to run can402 and move the arm</p>
+<p><strong>NOTE:</strong> Observe the bitrate of 1000 000 (1Mbps). This is not a random number, but the baud rate we
+set in the MTS software per each module (remember 1000 kbps?). In the original tutorial of the WPI
+guy, this number was 500000 (500 kbps), which is the default value Schunk ship the modules with.
+Neil said he set this to be 1000kbps,so the value set here should match the value set in the MTS software
+(which is the value at which the motor runs).</p>
+</div>
+<div class="section" id="sdh-hands">
+<h2>SDH hands<a class="headerlink" href="#sdh-hands" title="Permalink to this headline">¶</a></h2>
+<p>This should NOT be painful if we follow the instructions correctly (blessed be Neil who
+kindly provided assistance when I got stuck).</p>
+<p>The SDH hands communicate through serial ports. You need to install 4 libraries:</p>
+<ol class="arabic">
+<li><p class="first">Install reflex</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone http://github.com/golems/reflex
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install ntcan from the esd.eu website. You need to create an user account (free). The
+driver version that works well with our kernel is the latest one:
+esdcan-pci405-linux-2.6.x-x86_64-3.9.5.tgz. Notice that we have an ntcan repository
+in our golems server but these are old. They work with older kernels. The one I
+downloaded from the website works just fine. Note: You MUST follow the README instructions
+after compiling for loading the module and creating the nodes:</p>
+<ul>
+<li><p class="first">Create the inodes (probably as sudo)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> /dev
+mknod --mode<span class="o">=</span>a+rw can0 c <span class="m">53</span> 0
+mknod --mode<span class="o">=</span>a+rw can1 c <span class="m">53</span> 1
+</pre></div>
+</div>
+<p>Where 53 is the major of the driver (identifier of the card. See the README for details)</p>
+</li>
+<li><p class="first">Load the driver (probably with sudo)</p>
+<div class="highlight-bash"><div class="highlight"><pre>insmod /lib/modules/3.16.0-4-amd64/esdcan-pci405.ko
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first">Install sdhlibrary-cpp</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone thebrain.golems.org:/srv/git/drivers/sdhlibrary-cpp
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install sdhiod</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone thebrain.golems.org:/srv/git/drivers/sdhiod
+</pre></div>
+</div>
+</li>
+<li><p class="first">You should be good to go</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Setup of Control Machine (calvin)</a><ul>
+<li><a class="reference internal" href="#installation-of-can402">Installation of can402</a></li>
+<li><a class="reference internal" href="#sdh-hands">SDH hands</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="perception.html"
+                        title="previous chapter">Perception Software Tools</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/calvin.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="perception.html" title="Perception Software Tools"
+             >previous</a> |</li>
+        <li><a href="index.html">golems 0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, A. C. Huaman Quispe.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
