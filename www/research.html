@@ -74,7 +74,7 @@
         <div class="row show-for-large-up">
            <div class="twelve columns">
             <div id="featured"><img src="images/slide0_crichton_pickup.png" alt="Crichton pickup" width="960" height="250" />
-<img src="images/slide1_ICHR2014.png" alt="ICHR 2014" width="960" height="250" /><img src="images/slide2_multiplePaths.png" alt="IROS 2013" width="960" height="250" /><img src="images/slide4_apcDogFood.png" alt="APC Dog Food Trial" width="960" height="250" /></div>
+<img src="images/slide1_ICHR2014.png" alt="ICHR 2014" width="960" height="250" /><img src="images/baxter_asu_grasps_1.png" alt="Crichton Jr. picking up objects at ASU" width="960" height="250" /><img src="images/slide2_multiplePaths.png" alt="IROS 2013" width="960" height="250" /><img src="images/slide4_apcDogFood.png" alt="APC Dog Food Trial" width="960" height="250" /></div>
            </div>
            </div>
         </div>
@@ -84,17 +84,26 @@
       <div class="row"> 
       <div class="twelve columns">
 
-				<h4>Side Project of the Semester</h4>
-						<ul>
-							<li><a href="#cabinet">The Robot vs the Cabinet</a></li>
-					</ul>
-
 				<h4>Research</h4>
+
+                                <p>My work involves the full pipeline of robot manipulation, so here you will find a wide amount of various things I
+do related to each module which allows Crichton to manipulate objects:</p>
+
 						<ul>
+							<li><a href="#objectRecognition">Robot sees, robot recognizes</a></li>
+							<li><a href="#generalization">Generalization: Robots galore!</a></li>
 							<li><a href="#efficientTask">Efficient Manipulation Planning using Task Goals</a></li>
 							<li><a href="#sq">Grasping unknown objects using superquadrics approximation</a></li>
 							<li><a href="#nss">Path Planning for Redundant Robotic Arms</a></li>
 					</ul>
+
+
+				<h4>Side Project of the Semester (Spring 2015)</h4>
+						<ul>
+							<li><a href="#cabinet">The Robot vs the Cabinet</a></li>
+					</ul>
+
+
 				<h4>Various previous projects</h4>
 						<ul>
 							<li><a href="#tortuninjaProject">Robot exploration under human supervision</a></li>
@@ -103,15 +112,36 @@
 			<!-- Horizontal Line -->       
 			<hr />	
 
-			<h5><a name="cabinet">The Robot vs the Cabinet</a></h5>
+			<h5><a name="objectRecognition">Crichton recognizing 42 objects!</a></h5>
 				<table border="1">
 				<tr>
-						<td><iframe width="400" height="300" src="https://www.youtube.com/embed/GzP4uYzrHCM" frameborder="0" allowfullscreen></iframe></td>
-						<td>Bin picking, although an inherently simple problem, is not that easy to solve for a robot with such long limb as ours (not to mention his
-freaking long fingers). Whenever I have free time, I go away from my benchmarking general manipulation problems and investigate how to efficiently generate
-plans for Crichton to become a future warehouse robot :0}</td>
+						<td><iframe width="400" height="300" src="https://www.youtube.com/embed/H1dqGsmAtLM?list=PL0_FFtSIbUNUhWShdd6sGyoz9qICKSPNF" frameborder="0" allowfullscreen></iframe></td>
+						<td>Humans manipulate objects everyday and unconsciously we use our experience to
+help us decide how to handle objects. While we do not have the exact information of every object (i.e. detailed 3D models), we certainly
+know "something" about most objects we face. For instance, if we see a cup we will likely try to grasp it from the side and keep it upright.
+This video shows the results of our teaching Crichton to recognize 42 different household objects (30 of them from the YCB dataset). By recognizing
+the objects, Crichton in turn can access some pre-stored information, such as a general description of the object and general information
+about affordances, which is useful for the subsequent step of manipulation planning.</td>
 				</tr>
 				</table> 
+
+
+			<!-- Horizontal Line -->       
+			<hr />	
+
+			<h5><a name="generalization">Hi Baxter!</a></h5>
+				<table border="1">
+				<tr>
+						<td><iframe width="400" height="300" src="https://www.youtube.com/embed/LiPcuwIFLjo?list=PL0_FFtSIbUNUhWShdd6sGyoz9qICKSPNF" frameborder="0" allowfullscreen></iframe></td>
+						<td>As much as I love Crichton, it is evident to me that he is not the only robot
+on Earth. We decided to test his pipeline on another platform and we got the great chance to paid a visit to Dr. Ben Amor at Arizona
+State University. Dr. Ben Amor happened to have a Baxter so we set to transfer some of Crichton manipulation code to the said Baxter
+(a.k.a. Cricthon Jr.) and we got some neat results. I was only there for the week so I am looking forward to have more time to
+play around with the red robot in the future. Besides the joy of working with another platform, it is worth noticing that the algorithms
+we design are hardware agnostic, hence in theory they should run in any robot, as was the case here.</td>
+				</tr>
+				</table> 
+
 
 			<!-- Horizontal Line -->       
 			<hr />	
@@ -148,6 +178,22 @@ nullspace of the arm and searching through it. By using diverse heuristic functi
 requirements.</td>
 				</tr>
 				</table> 
+
+
+
+			<!-- Horizontal Line -->       
+			<hr />	
+
+			<h5><a name="cabinet">The Robot vs the Cabinet</a></h5>
+				<table border="1">
+				<tr>
+						<td><iframe width="400" height="300" src="https://www.youtube.com/embed/GzP4uYzrHCM" frameborder="0" allowfullscreen></iframe></td>
+						<td>Bin picking, although an inherently simple problem, is not that easy to solve for a robot with such long limb as ours (not to mention his
+freaking long fingers). Whenever I have free time, I go away from my benchmarking general manipulation problems and investigate how to efficiently generate
+plans for Crichton to become a future warehouse robot :0}</td>
+				</tr>
+				</table> 
+
 
 			<!-- Horizontal Line -->       
 			<hr />	
