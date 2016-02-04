@@ -13,7 +13,7 @@ README
 * To update your site:
 
    ``cd /home/ana/website/www  # Your index.html is here
-     scp * ahuaman3@killerbee1.cc.gatech.edu:/net/www/grads/a/ahuaman3/
+     scp -r * ahuaman3@killerbee1.cc.gatech.edu:/net/www/grads/a/ahuaman3/
    ``    
 * Remember that you do NOT copy the www folder. Only copy the contents into (in this case) ahuaman3. 
   Your website is updated automatically.
