@@ -4,6 +4,8 @@ README
 * Long story short: Your files should go wherever the symlink www points at.
 * If you want to see the www symlink:
 
+NOTE: APril:Gatech pwd == CoC pwd(April 6)
+
   ``
   ssh ahuaman3@killerbee1.cc.gatech.edu
   ls -l 
