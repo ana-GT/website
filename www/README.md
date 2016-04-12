@@ -7,7 +7,7 @@ README
 NOTE: APril:Gatech pwd == CoC pwd(April 6)
 
   ``
-  ssh ahuaman3@killerbee1.cc.gatech.edu
+  ssh ahuaman3@killerbee3.cc.gatech.edu
   ls -l 
   ``
   The -l option should show you where www points at. Right now I see www -> /net/www/grads/a/ahuaman3.
@@ -15,8 +15,10 @@ NOTE: APril:Gatech pwd == CoC pwd(April 6)
 * To update your site:
 
    ``cd /home/ana/website/www  # Your index.html is here
-     scp -r * ahuaman3@killerbee1.cc.gatech.edu:/net/www/grads/a/ahuaman3/
+     scp -r * ahuaman3@killerbee3.cc.gatech.edu:/net/www/grads/a/ahuaman3/
    ``    
+* FYI: Last time I checked (April 12th, 2016) only killerbee3 worked fine w.r.t. killerbee1. I think
+  I accidentally erased the killerbee1 start configuration files.
 * Remember that you do NOT copy the www folder. Only copy the contents into (in this case) ahuaman3. 
   Your website is updated automatically.
 
