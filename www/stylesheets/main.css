@@ -15,12 +15,16 @@ body {background: #fff}
 
 .blog_post {}
 .post_meta {font-family: Georgia, "Times New Roman", Times, serif; font-style: italic; text-align: center; color: #999}
-p {color: #000; font-size: 13px}
+p {color: #000; font-size: 16px}
 p.welcome_text {font-size: 180%; text-align:center; font-weight: normal; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic}
-p.welcome_text_small {font-size: 150%; text-align:center; font-weight: normal; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic}
-p.welcome_text_ana_1 {font-size: 110%; text-align:left; font-weight: normal; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic}
+p.welcome_text_small {font-size: 18px; text-align:center; font-weight: normal; font-family:Gentium Basic; font-style:normal}
+p.welcome_text_ana_1 {font-size: 16px; text-align:left; font-weight: normal; font-family:Gentium Basic; font-style:normal}
 
-h1,h2,h3,h4 {font-family:'Open Sans Condensed',sans-serif; font-weight: normal}
+.small_text, .small_text li, .small_text ul {
+  font-family: Gentium Basic; font-style: normal; text-align: left; font-size: 16px;
+}
+
+h1,h2,h3,h4 {font-family:Gentium Basic; font-weight: normal}
 .heading_dots {background: url(../images/heading_dots_grey.png) repeat-x center}
 .heading_dots_grey {background: url(../images/heading_dots_grey.png) repeat-x center}
 .heading_bg {background:#FFF; padding: 0 6px 0 0}
@@ -60,7 +64,7 @@ dl.tabs dd.active {
 }
 
 .nav-bar {margin-top: 0; background: #f8f8f8}
-.nav-bar > li {border: 0; padding: 0; font-family: 'Open Sans Condensed',sans-serif; letter-spacing: 1px; box-shadow: none}
+.nav-bar > li {border: 0; padding: 0; font-family: Gentium Basic; letter-spacing: 1px; box-shadow: none}
 .nav-bar > li > a:first-child {font-size: 16px; text-transform: uppercase; padding: 0 25px}
 .nav-bar > li:last-child {border: 0; box-shadow: none}
 .nav-bar > li.active:hover { background: #f34c31; cursor: default; }{}
