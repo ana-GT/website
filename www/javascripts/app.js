@@ -26,7 +26,6 @@
     $.fn.foundationTabs             ? $doc.foundationTabs() : null;
     
   
-  
     $("#featured").orbit();
   
 
@@ -44,5 +43,5 @@
       }, 0);
     });
   }
-
+  console.log("Running the app.js function OKAY")
 })(jQuery, this);

@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8" />
 
@@ -15,7 +10,6 @@
   
   <!-- Included CSS Files (Compressed) -->
   <link rel="stylesheet" href="stylesheets/foundation.min.css">
-  <link rel="stylesheet" href="stylesheets/main.css">
   <link rel="stylesheet" href="stylesheets/app.css">
 
   <script src="javascripts/modernizr.foundation.js"></script>
@@ -23,15 +17,10 @@
   <!-- Google fonts -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />
 
-  <!-- IE Fix for HTML5 Tags -->
-  <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
 </head>
 <body>
 
-			<!-- Header Logo -->
+      <!-- Header Logo -->
       <div class="row">      
       <!-- <a href="index.html"><img src="images/logo.png" alt="desc" class="header_logo" /></a> -->     
      <h3>A. C. Huam&aacute;n Quispe</h3>
@@ -39,48 +28,16 @@
       
       
      <div class="row page_wrap" style="margin-top:-2px">
-     <!-- page wrap -->
-     <div class="twelve columns">
-      <!-- page wrap -->
-      
-    	<!-- Navigation Bar -->   
-       <div class="row">  
-      
-        <div class="twelve columns header_nav" style="margin-bottom:0; box-shadow: none">
-        
-          <div class="twelve columns">
-            <ul id="menu-header" class="nav-bar horizontal">
-            
-            <li class=""><a href="index.html">Home</a></li>              
-            <li class=""><a href="research.html">Research</a></li>  
-            <li class=""><a href="publications.html">Publications</a></li>
-            <li class=""><a href="contact.html">Contact</a></li>
-            <li class=""><a href="code.html">Code</a></li>
-            <li class="active"><a href="tutorials.html">Tutorials</a></li>
-            <li class=""><a href="about.html">About</a></li>
+     <div class="col-12">
 
-            </ul><script type="text/javascript">
-           //<![CDATA[
-           $('ul#menu-header').nav-bar();
-            //]]>
-            </script>
+     <div class="row header_nav" style="margin-bottom:0; box-shadow: none">
+        <div id="navbar-frame"></div>
+     </div>            
 
-          </div>
-          </div>          
-        </div>
-				<!-- END Navigation Bar -->
+     <div id="slider-frame"></div>  
 
-      <!-- Slider images -->
-        <div class="row show-for-large-up">
-           <div class="twelve columns">
-            <div id="featured"><img src="images/slide0_crichton_pickup.png" alt="Crichton pickup" width="960" height="250" />
-<img src="images/slide1_ICHR2014.png" alt="ICHR 2014" width="960" height="250" /><img src="images/baxter_asu_grasps_1.png" alt="Crichton Jr. picking up objects at ASU" width="960" height="250" /><img src="images/slide2_multiplePaths.png" alt="IROS 2013" width="960" height="250" /><img src="images/slide4_apcDogFood.png" alt="APC Dog Food Trial" width="960" height="250" /></div>
-           </div>
-           </div>
-        </div>
-      <!-- END Slider images -->
       
-			<!--------------->
+      <!--------------->
       <div class="row"> 
       <div class="twelve columns">
 				<h3>Renderer Library</h3>
@@ -119,11 +76,15 @@
       </div>
 
     </div><!-- end page wrap) -->
-    <!-- Included JS Files (Compressed) -->
-    <script src="javascripts/foundation.min.js" type="text/javascript">
-</script> <!-- Initialize JS Plugins -->
-     <script src="javascripts/app.js" type="text/javascript">
-</script>
+
+  <!-- Scripts -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/page_template.js"></script>
+          
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/foundation.min.js" ></script>
+  <script src="javascripts/app.js" defer></script> 
+
   
 </body>
 </html>
