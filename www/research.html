@@ -14,73 +14,60 @@
 
   <script src="javascripts/modernizr.foundation.js"></script>
   <script src="javascripts/jquery.js"></script>
-    
+  <script src="js/page_layout.js" defer></script>
+      
   <!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />
 
 </head>
+
 <body>
+     <!-- Header -->
+     <ana-page-header></ana-page-header>   
 
-			<!-- Header Logo -->
-      <div class="row">      
-      <!-- <a href="index.html"><img src="images/logo.png" alt="desc" class="header_logo" /></a> -->     
-     <h3>A. C. Huam&aacute;n Quispe</h3>
-      </div>
-      
-      
-     <div class="row page_wrap" style="margin-top:-2px">
-       <div class="col-12">
-      
-      <div class="row col-12 header_nav" style="margin-bottom:0; box-shadow: none">
-        <div id="navbar-frame"></div>
-      </div> 
-
-     <div id="slider-frame"></div>
-         
       <!-- Research -->
-      <div class="row"> 
-      <div class="twelve columns">
+      <div class="row col-12"> 
 
-				<h4>Research</h4>
+	<h4>Research</h4>
 
-                                <p>My work involves the full pipeline of robot manipulation, so here you will find a wide amount of various things I
+        <p>My work involves the full pipeline of robot manipulation, so here you will find a wide amount of various things I
 do related to each module which allows Crichton to manipulate objects:</p>
 
-						<ul>
-							<li><a href="#pouring3Objects">Pouring in different locations (because it is not always the center!)</a></li>
-							<li><a href="#pickAndPlaceRelaxed">Robot picks and place to a table, on top of a box and inside a box</a></li>
-							<li><a href="#robotPouring">Robot pours</a></li>
-							<li><a href="#objectRecognition">Robot sees, robot recognizes</a></li>
-							<li><a href="#generalization">Generalization: Robots galore!</a></li>
-							<li><a href="#efficientTask">Efficient Manipulation Planning using Task Goals</a></li>
-							<li><a href="#sq">Grasping unknown objects using superquadrics approximation</a></li>
-							<li><a href="#nss">Path Planning for Redundant Robotic Arms</a></li>
-					</ul>
+	<ul>
+	<li><a href="#pouring3Objects">Pouring in different locations (because it is not always the center!)</a></li>
+	<li><a href="#pickAndPlaceRelaxed">Robot picks and place to a table, on top of a box and inside a box</a></li>
+	<li><a href="#robotPouring">Robot pours</a></li>
+	<li><a href="#objectRecognition">Robot sees, robot recognizes</a></li>
+	<li><a href="#generalization">Generalization: Robots galore!</a></li>
+	<li><a href="#efficientTask">Efficient Manipulation Planning using Task Goals</a></li>
+	<li><a href="#sq">Grasping unknown objects using superquadrics approximation</a></li>
+	<li><a href="#nss">Path Planning for Redundant Robotic Arms</a></li>
+	</ul>
 
 
-				<h4>Side Project of the Semester (Spring 2015)</h4>
-						<ul>
-							<li><a href="#cabinet">The Robot vs the Cabinet</a></li>
-					</ul>
+	<h4>Side Project of the Semester (Spring 2015)</h4>
+	<ul>
+	<li><a href="#cabinet">The Robot vs the Cabinet</a></li>
+	</ul>
 
 
-				<h4>Various previous projects</h4>
-						<ul>
-							<li><a href="#tortuninjaProject">Robot exploration under human supervision</a></li>
-					</ul>		
+	<h4>Various previous projects</h4>
+	<ul>
+	<li><a href="#tortuninjaProject">Robot exploration under human supervision</a></li>
+	</ul>		
 
-			<!-- Horizontal Line -->       
-			<hr />	
+	<!-- Horizontal Line -->       
+	<hr />	
 
 
-			<h5><a name="pouring3Objects">Crichton pours from 3 objects into a bowl at different places on a table</a></h5>
-				<table border="1">
-				<tr>
-						<td><video width="640" height="480" controls>
+	<h5><a name="pouring3Objects">Crichton pours from 3 objects into a bowl at different places on a table</a></h5>
+	<table border="1">
+	<tr>
+	<td><video width="640" height="480" controls>
   <source src="media/pouring_april_25_2016_3objects.mp4" type="video/mp4"></video></td>
-						<td>Tests with 3 different objects (white cup, Pringles and mustard). The objects start at 3 different locations and end up in 6 goal places for the bowl (showing only 4 examples per each due to lack of space). If for some reason this video does not play here, you can see the YouTube version <a href="https://www.youtube.com/watch?v=HncXhkcdo9Y">here</a></td>
-				</tr>
-				</table> 
+	<td>Tests with 3 different objects (white cup, Pringles and mustard). The objects start at 3 different locations and end up in 6 goal places for the bowl (showing only 4 examples per each due to lack of space). If for some reason this video does not play here, you can see the YouTube version <a href="https://www.youtube.com/watch?v=HncXhkcdo9Y">here</a></td>
+	</tr>
+	</table> 
 
 
 			<h5><a name="PickAndPlaceRelaxed">Crichton picking and placing objects on a table, on top of a box and inside a box!</a></h5>
@@ -208,33 +195,20 @@ plans for Crichton to become a future warehouse robot :0}</td>
 			<hr />	
 
       </div>
-      </div>
       <!-- END Research -->   
       
 
-      <div class="col-12 row">
-          <ul id="menu3" class="footer_menu horizontal">
-            <li class=""><a href="index.html">Home</a></li>
-          </ul>
-      </div>
-		  
-      <!--<script>
-          $('ul#menu3').nav-bar();
-      </script>-->
-
-    </div> <!-- col-12 -->
-  </div><!-- row page_wrap -->
+     <!-- Footer -->
+     <ana-page-footer></ana-page-footer>
 
   <!-- Scripts -->
   <script src="javascripts/jquery.js"></script>
-  <script src="javascripts/page_template.js"></script>
-  <script src="javascripts/page_home.js"></script>
+  <script src="js/page_template.js"></script>
+  <script src="js/page_home.js"></script>
           
   <!-- Included JS Files (Compressed) -->
   <script src="javascripts/foundation.min.js" ></script>
   <script src="javascripts/app.js" defer></script> 
-
-
   
 </body>
 </html>

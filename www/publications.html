@@ -13,33 +13,21 @@
   <link rel="stylesheet" href="stylesheets/app.css">
 
   <script src="javascripts/modernizr.foundation.js"></script>
-  
+  <script src="javascripts/jquery.js"></script>
+  <script src="js/page_layout.js" defer></script>
+    
   <!-- Google fonts -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />
 
-
 </head>
+
 <body>
 
-	<!-- Header Logo -->
-      <div class="row">      
-      <!-- <a href="index.html"><img src="images/logo.png" alt="desc" class="header_logo" /></a> -->     
-     <h3>A. C. Huam&aacute;n Quispe</h3>
-      </div>
-      
-      
-     <div class="row page_wrap" style="margin-top:-2px">
-     <div class="col-12">
-      
-      <div class="row header_nav" style="margin-bottom:0; box-shadow: none">
-        <div id="navbar-frame"></div>
-      </div>            
+     <!-- Header -->
+     <ana-page-header></ana-page-header>   
 
-     <div id="slider-frame"></div>
-      
-      <!-- Home Intro Text -->
-      <div class="row"> 
-      <div class="twelve columns">
+      <!-- Research -->
+      <div class="row col-12"> 
 		
      <h3>Conference Publications</h3>
 	<ul>
@@ -96,22 +84,21 @@
        </ul>
 
      <h3>Workshops</h3>
-			<ul>
+	<ul>
         <li><b>Manipulation benchmark tasks for physical robotic systems: A proposed approach</b><br />
-			      <i> A. Huam&aacute;n  Quispe </i> <br />
-			      <em>Workshop on Policy Representation for Humanoid Robots, Humanoids 2014</em>
-				</li>				
+	<i> A. Huam&aacute;n  Quispe </i> <br />
+	<em>Workshop on Policy Representation for Humanoid Robots, Humanoids 2014</em>
+	</li>				
+        
         <li><b>It takes two hands to grasp: Towards Handovers in Bimanual Manipulation Planning</b><br />
-			      <i> A. Huam&aacute;n  Quispe, H. Ben Amor, H. Christensen and M. Stilman </i> <br />
-			      <em>Workshop on Human vs Robot Grasping and Manipulation, RSS 2014</em>
-				</li>				
+	<i> A. Huam&aacute;n  Quispe, H. Ben Amor, H. Christensen and M. Stilman </i> <br />
+	<em>Workshop on Human vs Robot Grasping and Manipulation, RSS 2014</em>
+	</li>				
 
         <li><b>Open Up! Towards the Use of Human Strategies to address Pose Uncertainty in Grasp Planning</b><br />
-			      <i> A. Huam&aacute;n  Quispe and M. Stilman </i> <br />
-			      <em>Workshop on Information-based Grasp and Manipulation Planning, RSS 2014</em>
-				</li>				
-       </ul>
-			<ul>				
+	<i> A. Huam&aacute;n  Quispe and M. Stilman </i> <br />
+	<em>Workshop on Information-based Grasp and Manipulation Planning, RSS 2014</em>
+	</li>				
        </ul>
 
 
@@ -140,31 +127,16 @@
       </p>
 
       </div>
-      </div>
-      <!-- END Home Intro Text -->   
+      <!-- END Publications -->
+
+     <!-- Footer -->
+     <ana-page-footer></ana-page-footer>
       
 
-      <div class="row">
-      <div class="twelve columns">
-          <ul id="menu3" class="footer_menu horizontal">
-            <li class=""><a href="index.html">Home</a></li>
-          </ul>
-      </div>
-      </div>
-		  
-		  <script type="text/javascript">
-          //<![CDATA[
-          $('ul#menu3').nav-bar();
-          //]]>
-          </script>
-
-      </div>
-
-    </div><!-- end page wrap) -->
 
   <!-- Scripts -->
   <script src="javascripts/jquery.js"></script>
-  <script src="javascripts/page_template.js"></script>
+  <script src="js/page_template.js"></script>
           
   <!-- Included JS Files (Compressed) -->
   <script src="javascripts/foundation.min.js" ></script>

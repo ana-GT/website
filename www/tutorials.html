@@ -6,80 +6,54 @@
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
 
-  <title>Ana C. Huam&aacute;n Quispe</title>
+  <title>Ana's webpage</title>
   
   <!-- Included CSS Files (Compressed) -->
   <link rel="stylesheet" href="stylesheets/foundation.min.css">
   <link rel="stylesheet" href="stylesheets/app.css">
 
   <script src="javascripts/modernizr.foundation.js"></script>
-  
+  <script src="javascripts/jquery.js"></script>
+  <script src="js/page_layout.js" defer></script>
+    
   <!-- Google fonts -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />
 
 </head>
 <body>
 
-      <!-- Header Logo -->
-      <div class="row">      
-      <!-- <a href="index.html"><img src="images/logo.png" alt="desc" class="header_logo" /></a> -->     
-     <h3>A. C. Huam&aacute;n Quispe</h3>
-      </div>
+     <!-- Header -->
+     <ana-page-header></ana-page-header>   
+
+      <!-- Tutorials -->
+      <div class="row col-12"> 
+	
+	<h3>Renderer Library</h3>
+	<ul>
+	<li>Back in grad school, I created a tiny library to parse worlds in <a href="https://github.com/dartsim/dart/wiki">DART</a> and render them using <a href="www.povray.org">POV-Ray</a>. The results, I believe, are rather neat and much better than regular OpenGL. The library is called <a href="http://github.com/ana-GT/lighter">lighter</a> and is available on my <a href="http://github.com/ana-GT">Github</a> page. There are still some glitches I never fixed (notice Baxter's twisted head?) :(</li>
+	</ul>
+
+        <div align="center">  
+           <img src="images/lighter_crichton_example_1.png" alt="Crichton lighter 1" width="400" height="300" />
+           <img src="images/lighter_baxter_example_1.png" alt="Baxter lighter 1" width="400" height="300" />
+        </div>                            
+
+	<h3>Software Tools for Golems robots</h3>
+	<ul>
+	  <li><a href="docs/tutorials/software/build/index.html">Software Tools</a> </li>
+	</ul>
+
+     </div>
+     <!-- End of tutorials --> 
+
+     <!-- Footer -->
+     <ana-page-footer></ana-page-footer>
       
-      
-     <div class="row page_wrap" style="margin-top:-2px">
-     <div class="col-12">
 
-     <div class="row header_nav" style="margin-bottom:0; box-shadow: none">
-        <div id="navbar-frame"></div>
-     </div>            
-
-     <div id="slider-frame"></div>  
-
-      
-      <!--------------->
-      <div class="row"> 
-      <div class="twelve columns">
-				<h3>Renderer Library</h3>
-				<ul>
-					<li>I very recently created a tiny library to parse worlds in <a href="https://github.com/dartsim/dart/wiki">DART</a> and render them using <a href="www.povray.org">POV-Ray</a>. The results, I believe, are rather neat and much better than regular OpenGL. The library is called <a href="http://github.com/ana-GT/lighter">lighter</a> and is available on my <a href="http://github.com/ana-GT">Github</a> page. There are still some glitches I have to fix (notice Baxter's twisted head?), so stay tuned.</li>
-				</ul>
-
-                                <div align="center">  
-                                <img src="images/lighter_crichton_example_1.png" alt="Crichton lighter 1" width="400" height="300" />
-                                <img src="images/lighter_baxter_example_1.png" alt="Baxter lighter 1" width="400" height="300" />
-                                </div>                            
-
-				<h3>Software Tools for Golems robots</h3>
-				<ul>
-					<li><a href="docs/tutorials/software/build/index.html">Software Tools</a> </li>
-				</ul>
-
-			</div>
-			</div>
-			<!---------------->      
-
-      <div class="row">
-      <div class="twelve columns">
-          <ul id="menu3" class="footer_menu horizontal">
-            <li class=""><a href="index.html">Home</a></li>
-          </ul>
-      </div>
-      </div>
-		  
-		  <script type="text/javascript">
-          //<![CDATA[
-          $('ul#menu3').nav-bar();
-          //]]>
-          </script>
-
-      </div>
-
-    </div><!-- end page wrap) -->
 
   <!-- Scripts -->
   <script src="javascripts/jquery.js"></script>
-  <script src="javascripts/page_template.js"></script>
+  <script src="js/page_template.js"></script>
           
   <!-- Included JS Files (Compressed) -->
   <script src="javascripts/foundation.min.js" ></script>

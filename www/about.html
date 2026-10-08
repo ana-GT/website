@@ -14,32 +14,20 @@
 
   <script src="javascripts/modernizr.foundation.js"></script>
   <script src="javascripts/jquery.js"></script>
-    
+  <script src="js/page_layout.js" defer></script>
+      
   <!-- Google fonts -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />
 
 </head>
+
 <body>
 
-      <!-- Header Logo -->
-      <div class="row">      
-      <!-- <a href="index.html"><img src="images/logo.png" alt="desc" class="header_logo" /></a> -->     
-     <h3>A. C. Huam&aacute;n Quispe</h3>
-      </div>
-      
-      
-     <div class="row page_wrap" style="margin-top:-2px">
-     <div class="col-12">
-      
-      <div class="row col-12 header_nav" style="margin-bottom:0; box-shadow: none">
-        <div id="navbar-frame"></div>
-      </div> 
+     <!-- Header -->
+     <ana-page-header></ana-page-header>   
 
-     <div id="slider-frame"></div>
-           
-      <!--------------->
-      <div class="row"> 
-      <div class="twelve columns">
+      <!-- About -->
+      <div class="row col-12"> 
 				<h3>Quick info:</h3>
 				<ul class="small_text">
 					<li>Looking for my resume? It is <a href="docs/resume/cv.pdf">right here!</a> </li>
@@ -56,29 +44,17 @@
 				<p class="small_text">Besides the usual suspects, such as my family, I am greatly indebted to the <a href="http://www.facultyforthefuture.net/">Schlumberger Foundation</a> for
 their incredible help and trust from 2011- 2014. Wouldn't have been able to go through grad school without them.</p>
                           
-			</div>
-			</div>
-			<!---------------->      
+     </div>
+     <!-- END About -->      
 
-      <div class="row">
-      <div class="twelve columns">
-          <ul id="menu3" class="footer_menu horizontal">
-            <li class=""><a href="index.html">Home</a></li>
-          </ul>
-      </div>
-      </div>
-			  
-          <!--<script type="text/javascript">
-          $('ul#menu3').nav-bar();
-          </script>-->
-
-      </div>
-
-    </div><!-- end page wrap) -->
+    
+     <!-- Footer -->
+     <ana-page-footer></ana-page-footer>
+           
 
   <!-- Scripts -->
   <script src="javascripts/jquery.js"></script>
-  <script src="javascripts/page_template.js"></script>
+  <script src="js/page_template.js"></script>
           
   <!-- Included JS Files (Compressed) -->
   <script src="javascripts/foundation.min.js" ></script>
