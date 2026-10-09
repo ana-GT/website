@@ -18,7 +18,7 @@ body {background: #fff}
 p {color: #000; font-size: 16px}
 p.welcome_text {font-size: 180%; text-align:center; font-weight: normal; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic}
 p.welcome_text_small {font-size: 18px; text-align:center; font-weight: normal; font-family:Gentium Basic; font-style:normal}
-p.welcome_text_ana_1 {font-size: 16px; text-align:left; font-weight: normal; font-family:Gentium Basic; font-style:normal}
+p.text_16_left {font-size: 16px; text-align:left; font-weight: normal; font-family:Gentium Basic; font-style:normal}
 
 .small_text, .small_text li, .small_text ul {
   font-family: Gentium Basic; font-style: normal; text-align: left; font-size: 16px;
